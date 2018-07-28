@@ -84,7 +84,7 @@ app.get('/userspanel', (req, res) => {
       "token": token
     } // request headers
   };
-  client.get("http://localhost:3000/api/user", args, function(users, response) {
+  client.get("http://localhost:4000/api/user", args, function(users, response) {
     console.log(users)
     if (!identity && profile !== 'administrator') {
       res.render('login', {
@@ -122,7 +122,7 @@ app.get('/pnotif', (req, res) => {
       } // request headers
     };
     // get the data in rest from the server
-    client.get("http://localhost:3000/api/mails", args, function(data, response) {
+    client.get("http://localhost:4000/api/mails", args, function(data, response) {
       console.log(data)
       data.forEach((arr) => {
         arr.forEach((msg) => {
@@ -183,7 +183,7 @@ app.get('/policies', (req, res) => {
       } // request headers
     };
     // get the data in rest from the server
-    client.get("http://localhost:3000/api/insured/" + userUid, args, function(policies, response) {
+    client.get("http://localhost:4000/api/insured/" + userUid, args, function(policies, response) {
 
       policies.policies.forEach((policy) => {
         Object.assign(policy, {
@@ -209,7 +209,7 @@ app.get('/userspanel', (req, res) => {
       "token": token
     } // request headers
   };
-  client.get("http://localhost:3000/api/user", args, function(users, response) {
+  client.get("http://localhost:4000/api/user", args, function(users, response) {
     console.log(users)
     if (!identity && profile !== 'administrator') {
       res.render('login', {
@@ -233,7 +233,7 @@ app.get('/back', (req, res) => {
       uid: 'qualicloud'
     }
   }
-  client.get("http://localhost:3000/api/mailsback", args, function(data, response) {
+  client.get("http://localhost:4000/api/mailsback", args, function(data, response) {
     data.forEach((msg) => {
       Object.assign(msg, {
         messageCreationDate: moment(msg.messageCreationDate).local().fromNow(),
@@ -246,7 +246,7 @@ app.get('/back', (req, res) => {
       } // request headers
     };
     // get the data in rest from the server
-    client.get("http://localhost:3000/api/user", args, function(clients, response) {
+    client.get("http://localhost:4000/api/user", args, function(clients, response) {
       res.render('admin', {
         messages: data,
         clients: clients,
