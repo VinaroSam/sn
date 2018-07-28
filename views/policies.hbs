@@ -1,0 +1,91 @@
+
+<script type="text/javascript">
+
+ if(localStorage.token === 'undefined') {
+ console.log('product : token not defined')
+   window.location.replace("/login")
+}
+</script>
+
+
+
+    <main class="mdl-layout__content mdl-color--white">
+
+        <div class="demo-upd .mdl-card__title mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+
+
+            <div class="pagehead mdl-card__title mdl-card--expand mdl-color--grey-200">
+
+                <h2 class="mdl-card__title-text mdl-color-text--white-900"> Assurances</h2>
+            </div>
+
+            <!-- <div>
+
+                </br>
+
+            <a href="/pvform/?token={{token}}"
+            <button class="mdl-button mdl-js-button mdl-color-text--blue-900">
+              <i class="material-icons">note_add</i>Upload document
+            </button>
+             </a>
+
+
+
+            </div> -->
+
+
+          <div class="table-responsive mdl-color-text--grey-800">
+
+                      <table class="table table-striped table-sm table-hover">
+                         <thead class="thead-inverse">
+                              <th>Assureur</th>
+                              <th>Référence</th>
+                              <th>Description</th>
+                              <th>Début du contrat</th>
+                              <th>Prise en charge maladie journalier</th>
+                              <th>Prise en charge accident journalier </th>
+                              <th>Franchise</th>
+                              <th>Type</th>
+                              <th>Status</th>
+
+                          </thead>
+
+
+                          <tbody>
+<tr>
+
+                              {{#each policies.policies }}
+                                  <td>{{insurer}}</td>
+                                  <td>{{policyNumber}}</td>
+                                  <td>{{policyDescription}}</td>
+
+                                  <td>{{policyDateOfEffect}}</td>
+
+                                  <td>{{#if diseaseInsuredAmount}} {{diseaseInsuredAmount}} € {{else}} - {{/if}}</td>
+                                  <td>{{#if accidentInsuredAmount}} {{accidentInsuredAmount}} € {{else}} - {{/if}}</td>
+                                  <td>{{#if franchise}}{{franchise}} € {{else}} - {{/if}}</td>
+                                   <td>{{policyType}}</td>
+
+
+                                       <td>  <span class="badge badge-pill badge-primary">{{status}}</span> </td>
+
+                               </tr>
+                              {{/each}}
+                          </tbody>
+
+                       </table>
+          </div>
+
+
+  </div>
+    <main>
+
+
+
+
+<link rel="stylesheet" href="/mdl/material.min.css">
+<script src="/mdl/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  </body>
+</html>

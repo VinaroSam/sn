@@ -1,0 +1,109 @@
+
+<script type="text/javascript">
+
+ if(localStorage.token === 'undefined') {
+ console.log('product : token not defined')
+   window.location.replace("/login")
+}
+</script>
+
+
+
+
+ <!-- body.... Central  Contents -->
+     
+      <main class="mdl-layout__content mdl-color--grey-400">
+
+
+
+
+
+        <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">     
+
+
+            <div class="mdl-card--expand mdl-color--cyan-300">
+
+                <h2 class="mdl-card__title2">Etat de votre dossier </h2>
+            </div>
+
+                 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                Votre dossier de Prévoyance <b>No.ADH00140229</b> en cours de validation médicale
+                         </div>
+
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="/enterprises/?token={{token}}"" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons md-dark">folder</i> Mes contrats</a>
+              </div>
+
+         </div>
+
+
+        <div id="myDIV" class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">     
+
+
+            <div class="mdl-card--expand mdl-color--red-500">
+
+                <h2 class="mdl-card__title1">Message Important</h2>
+            </div>
+
+                 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+              Pour finaliser votre adhésion de prévoyance <b>No.ADH00140229</b> , veuillez nous envoyer votre <b>attestation de revenu</b> à l'aide du bouton ci-dessous
+               </br> Cordialement, Prémavals 
+                </div>                     
+              <div class="mdl-card__actions mdl-card--border">
+               <a href="/pvform/?token={{token}}" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons md-dark">note_add</i> Envoyer document</a>
+               <button class="mdl-button mdl-js-button mdl-js-ripple-effect" onclick="myFunction()""><i class="material-icons md-dark">delete_forever</i> Supprimer</button>
+              </div>
+         </div>
+
+
+        <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">     
+
+
+            <div class="mdl-card--expand mdl-color--orange-300">
+
+                <h2 class="mdl-card__title3">Votre Courtier </h2>
+            </div>
+
+                 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                    <p>James Dupont
+                    </br>Courtage en Assurances.
+                    </br>mobile : 06 03 20 11 09
+                    </br>mail   : jd@courtage.com
+                    </p>
+                   </div>
+                      
+
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect"><i class="material-icons md-dark">email</i> Contacter mon courtier</a>
+              </div>
+
+         </div>
+
+      </main>
+  
+ <!-- end central contents -->
+
+     
+<!--
+      
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+   -->
+
+<script>
+function myFunction() {
+    var x = document.getElementById('myDIV');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+</script>
+
+
+<link rel="stylesheet" href="/mdl/material.min.css">
+<script src="/mdl/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   
+  </body>
+</html>

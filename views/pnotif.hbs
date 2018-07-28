@@ -1,0 +1,177 @@
+
+<script type="text/javascript">
+
+ if(localStorage.token === 'undefined') {
+ console.log('product : token not defined')
+   window.location.replace("/login")
+}
+</script>
+
+
+
+      <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="demo-upd mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+
+            <div class="">
+            <div class="pagehead mdl-card__title mdl-card--expand mdl-color--grey-200">
+
+                <h2 class="mdl-card__title-text mdl-color-text--white-900"> Messages</h2>
+            </div>
+            
+            <div class="outercontent">
+              <div class="table-responsive mdl-shadow--2dp">
+
+                      <!-- Nav tabs -->
+                      <p class="buttonadd">
+                        <a href="/nmsg/?token={{token}}">
+                          <button class="mdl-button mdl-js-button">
+                            <i class="material-icons ">note_add</i> nouveau
+                          </button>
+                          </a>
+                      </p>
+                      <ul class="nav nav-pills" role="tablist">
+
+                        <li class="nav-item">
+                          <a class="nav-link active" data-toggle="pill" href="#home" role="tab">Reçus</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link " data-toggle="pill" href="#send" role="tab">Envoyés</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="pill" href="#messages" role="tab">Archivés</a>
+                        </li>
+                      </ul>
+
+
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="home" role="tabpanel">
+
+                          <table class="mdl-data-table msgtable ">
+                            <thead>
+                              <tr>
+                                <th class="firstcol">Correspondant</th>
+                                <th>Message</th>
+                                <th>Réception</th>
+                                <th>Valider</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {{#forEach mails.[0]}}
+                              <tr>
+                                <td>{{messageSender}}</td>
+                                <td>{{messageBody}}</td>
+                                <td>{{messageCreationDate}}</td>
+                                <td><button type="button" value="{{messageid}}" class="btn btn-success valider">Valider</button></td>
+                              </tr>
+                              {{/forEach}}
+                              {{!-- <tr id="mensajes"  onmouseover="hoverColor()" class="table-danger">
+                                <td > Hannover re</td>
+                                <td > <div class="tdbody">You have submited a claim report for your policy <b>No.ADH00140229</b>, your paiment will arrive shortly, 3-4 business days </b></div></td>
+                                <td >5 May 2018</td>
+                              </tr> --}}
+
+
+                            </tbody>
+                          </table>
+
+                        </div>
+
+                        <div class="tab-pane" id="send" role="tabpanel">
+
+                          <table class="mdl-data-table msgtable ">
+                            <thead>
+                              <tr>
+                                <th class="firstcol">Correspondant</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {{#forEach mails.[1]}}
+                              <tr>
+                                <td>{{messageRecipient}}</td>
+                                <td>{{messageBody}}</td>
+                                <td>{{messageCreationDate}}</td>
+                              </tr>
+                              {{/forEach}}
+
+                            </tbody>
+                          </table>
+
+                        </div>
+
+
+                        <div class="tab-pane" id="messages" role="tabpanel">
+                          <table class="mdl-data-table msgtable ">
+                            <thead>
+                              <tr>
+                                <th class="firstcol">Correspondant</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {{#forEach mails.[2]}}
+                              <tr>
+                                <td>{{messageSender}}</td>
+                                <td>{{messageBody}}</td>
+                                <td>{{messageCreationDate}}</td>
+                              </tr>
+                              {{/forEach}}
+
+
+                            </tbody>
+                          </table>
+
+                        </div>
+
+                      </div>
+              </div>
+            </div>
+        </div>
+    <main>
+
+
+
+
+<script>
+function myFunctionX() {
+    var x = document.getElementById('mensajes');
+    validurl = "/pvform/?token={{token}}";
+    window.location.replace(validurl);
+}
+    function hoverColor(){
+     document.getElementById("mensajes").style.cursor = "pointer";
+
+}
+
+$(function(){
+  $('.valider').click(function(){
+    let url = '/api/mail/' + $(this).val()
+    $.ajax({
+      url: url,
+      method: 'PUT',
+      dataType: 'json',
+      headers: {
+        token: '{{token}}'
+      },
+      data: {
+        messageStatus: 'valide'
+      }
+    })
+    .done(function(res){
+      window.location.replace("/pnotif/?token={{token}}")
+    })
+  })
+})
+
+</script>
+
+
+<link rel="stylesheet" href="/mdl/material.min.css">
+<script src="/mdl/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  </body>
+</html>

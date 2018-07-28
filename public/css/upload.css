@@ -1,0 +1,106 @@
+.btn:focus,
+.upload-btn:focus {
+    outline: 0 !important;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #005192;
+}
+
+body {
+    text-align: center;
+}
+
+.row {
+    margin-top: 30px;
+}
+
+.upload-btn {
+    color: #ffffff;
+    background-color: #70c2af;
+    border: none;
+}
+
+.upload-btn:hover,
+.upload-btn:focus,
+.upload-btn:active,
+.upload-btn.active {
+    color: #ffffff;
+    background-color: #4e887a;
+    border: none;
+}
+
+.set-btn {
+    color: #ffffff;
+    background-color: #70c2af;
+    border: none;
+    padding: 3px;
+}
+
+.set-btn:hover,
+.set-btn:focus,
+.set-btn:active,
+.set-btn.active {
+    color: #ffffff;
+    background-color: #4e887a;
+    border: none;
+}
+
+.detailsPanel {
+    color: #ffffff;
+    background-color: #70c2af;
+    border: none;
+}
+
+.h6 {
+    padding-bottom: 10px;
+    color: #F89406;
+}
+
+.glyphicon {
+    font-size: 1em;
+    color: #9CA3A9;
+}
+
+h2 {
+    margin-top: 15px;
+    color: #68757E;
+}
+
+h4#p1{
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.panel {
+    padding-top: 20px;
+ padding-bottom: 2px;
+}
+
+.panel-body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.uploadElt{
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+input[type="file"].upload-input {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .main-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 450px;
+    }
+}

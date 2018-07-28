@@ -1,0 +1,75 @@
+
+<link rel="stylesheet" href="/css/login.css">
+
+
+
+    <form id="login" method="post" class="form-signin">
+      <img width=80% src="/images/logo-idm.png" style="height 80:px; margin-bottom: 15px; margin-left: 20px">
+
+
+      {{#if message}}
+     
+        <div class="alert alert-danger">{{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true"><h6 col>&times;</h6></span>
+        </button>
+        </div>
+     
+       {{/if}}
+
+      <input type="email" name="email" value="" class="form-control" placeholder="Login" required autofocus>
+      <input type="password" name="password" class="form-control" placeholder="Password" required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+
+    </form>
+
+
+
+<script type="text/javascript">
+
+window.scrollTo(0,1);
+
+function handleErrors(response) {
+    response => response.json()
+
+
+    return response;
+}
+
+const formToJSON = elements => [].reduce.call(elements, (data, element) => {
+
+  data[element.name] = element.value;
+  return data;
+
+}, {});
+
+
+  const formLogin = document.querySelector('#login')
+
+  formLogin.addEventListener('submit', event => {
+    event.preventDefault()
+    const data = formToJSON(login.elements);
+
+    fetch('/api/signin', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(data, null, ' ')
+    })
+    .then(res => res.json())
+    .then(data => {
+      localStorage.setItem('token', data.token)
+      if(localStorage.token === "undefined") {
+         console.log('token not defined, invalid credentials')
+         window.location.replace("/login/?error=1")
+
+         } else {
+            validurl = "/feed/?token="+data.token
+            window.location.replace(validurl)
+         }
+    })
+
+  })
+
+</script>

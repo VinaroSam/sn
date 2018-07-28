@@ -1,0 +1,128 @@
+<script type="text/javascript">
+  if (localStorage.token === 'undefined') {
+    console.log('cliam : token not defined')
+    window.location.replace("/login")
+  }
+</script>
+  <script src="/plugins/matchHeight/jquery.matchHeight.js"></script>
+<main class="sinisters mdl-layout__content mdl-color--white">
+
+  <div class="demo-upd .mdl-card__title mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+    <div>
+      <h2> Ajouter un Administrateur</h2>
+      <form id="myForm" action="/addUsers">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input id="firstName" class="mdl-textfield__input" type="text" name="firstName">
+          <label class="mdl-textfield__label" for="firstName">First name </label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input id="lastName" class="mdl-textfield__input" type="text" name="lastName">
+          <label class="mdl-textfield__label" for="lastName">Last name</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input id="mobile" class="mdl-textfield__input" type="text" name="mobile">
+          <label class="mdl-textfield__label" for="lastName">Mobile</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input id="email" class="mdl-textfield__input" type="email" name="email">
+          <label class="mdl-textfield__label" for="email">Email</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input id="password" class="mdl-textfield__input" type="password" name="password">
+          <label class="mdl-textfield__label" for="password">Mot de passe</label>
+        </div>
+
+        <input id="member" type="hidden" name="profile" value="administrator">
+        {{!-- <input id="password" type="hidden" name="password" value="mdp123"> --}}
+        <!-- <input id="externalId" type="hidden" name="externalId"> -->
+        <input id="token" type="hidden" name="token" value="{{token}}">
+        <button type="submit" name="button"> Ajouter</button>
+      </form>
+    </div>
+
+
+    <div class="clearfix">
+      {{#each users.users}}
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--6-col-desktop">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">{{firstName}} {{lastName}} </h2>
+          </div>
+          <div class="continfo mdl-card__supporting-text">
+            <div class="sinistre-info">
+              <p>Profil : {{profile}}</p>
+              <p>email : {{email}}</p>
+              <p>téléphone : {{mobile}}</p>
+              <p>Nombre d'amis : {{friends.length}}
+                <ul>
+                  {{#each friends}}
+                  <li>{{this}}</li>
+                  {{/each}}
+                </ul></p>
+            </div>
+          </div>
+          <div class="documentsstate mdl-card__actions mdl-card--border">
+          </div>
+        </div>
+      {{/each}}
+
+    </div>
+    <!-- end new boxes -->
+
+  </div>
+  <main>
+    <script>
+      // <script src = "/plugins/matchHeight/jquery.matchHeight.js" >
+    </script>
+    <script>
+    $('#extId').val('ext_' + guid())
+    function guid() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+      }
+      return s4() + s4() + '-' + s4() ;
+    }
+    $('#myForm').submit(function(e) {
+      var url = "/api/signUp"
+      $.ajax({
+        url: url,
+        method: 'POST',
+        dataType: 'json',
+        headers: {
+          token: '{{token}}'
+        },
+        data: {
+          firstName: $('#firstName').val(),
+          lastName: $('#lastName').val(),
+          email: $('#email').val(),
+          profile: $('#member').val(),
+          mobile: $('#mobile').val(),
+          externalId: 'ext_' + guid(),
+          password: $('#password').val()
+        }
+      })
+      .done(function(res){
+        $('#firstName').val('')
+        $('#lastName').val('')
+        $('#email').val('')
+        $('#member').val('')
+        $('#mobile').val('')
+        location.reload();
+      })
+      e.preventDefault()
+    })
+      $(function() {
+        $('.continfo').matchHeight();
+        $('.documentsstate').matchHeight();
+      });
+    </script>
+
+    <script src="/mdl/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="text/javascript" src="/js/strip.pkgd.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/strip.css" />
+    </body>
+
+    </html>
