@@ -25,20 +25,20 @@
                       <p class="buttonadd">
                         <a href="/newmsg/?token={{token}}">
                           <button class="mdl-button mdl-js-button">
-                            <i class="material-icons ">note_add</i> nouveau
+                            <i class="material-icons ">note_add</i> Create new message
                           </button>
                           </a>
                       </p>
                       <ul class="nav nav-pills" role="tablist">
 
                         <li class="nav-item">
-                          <a class="nav-link active" data-toggle="pill" href="#home" role="tab">Reçus</a>
+                          <a class="nav-link active" data-toggle="pill" href="#home" role="tab">Last messages</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link " data-toggle="pill" href="#send" role="tab">Envoyés</a>
+                          <a class="nav-link " data-toggle="pill" href="#send" role="tab">Sent</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" data-toggle="pill" href="#messages" role="tab">Archivés</a>
+                          <a class="nav-link" data-toggle="pill" href="#messages" role="tab">Archived</a>
                         </li>
                       </ul>
 
@@ -50,16 +50,16 @@
                           <table class="mdl-data-table msgtable ">
                             <thead>
                               <tr>
-                                <th class="firstcol">Correspondant</th>
-                                <th>Message</th>
-                                <th>Réception</th>
+                                <th class="firstcol">From</th>
+                                <th>Body</th>
+                                <th>Received</th>
                                 <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
                               {{#forEach mails.[0]}}
                               <tr>
-                                <td>{{messageSender}}</td>
+                                <td>{{messageFrom}}</td>
                                 <td>{{messageBody}}</td>
                                 <td>{{messageCreationDate}}</td>
                                 <td><button type="button" value="{{messageid}}" class="btn btn-success valider">Archiver</button></td>
@@ -82,15 +82,15 @@
                           <table class="mdl-data-table msgtable ">
                             <thead>
                               <tr>
-                                <th class="firstcol">Correspondant</th>
-                                <th>Message</th>
+                                <th class="firstcol">To</th>
+                                <th>Body</th>
                                 <th>Date</th>
                               </tr>
                             </thead>
                             <tbody>
                               {{#forEach mails.[1]}}
                               <tr>
-                                <td>{{messageRecipient}}</td>
+                                <td>{{messageTo}}</td>
                                 <td>{{messageBody}}</td>
                                 <td>{{messageCreationDate}}</td>
                               </tr>
@@ -106,15 +106,15 @@
                           <table class="mdl-data-table msgtable ">
                             <thead>
                               <tr>
-                                <th class="firstcol">Correspondant</th>
-                                <th>Message</th>
+                                <th class="firstcol">From</th>
+                                <th>Body</th>
                                 <th>Date</th>
                               </tr>
                             </thead>
                             <tbody>
                               {{#forEach mails.[2]}}
                               <tr>
-                                <td>{{messageSender}}</td>
+                                <td>{{messageFrom}}</td>
                                 <td>{{messageBody}}</td>
                                 <td>{{messageCreationDate}}</td>
                               </tr>

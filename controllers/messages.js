@@ -16,6 +16,9 @@ function makeMessage(req, res) {
     messageRecipient: req.body.messageRecipient,
     messageTitle: req.body.messageTitle,
     messageBody: req.body.messageBody,
+    messageFullName: req.body.messageFullName,
+    messageFrom: req.body.messageFrom,
+    messageTo: req.body.messageTo,
     messageCreationDate: moment().toISOString(),
     messageStatus: 'new'
   })
@@ -85,10 +88,10 @@ function getMessagesByUser(req, res) {
     res.status(200).json(
       messagesClasses
     )
-  });
+  }).sort({messageCreationDate: -1});
 }
 
-function getAllMessagesForBackend(req, res) {
+function getAllMessages(req, res) {
   let userUid = req.headers.uid;
   console.log(req.headers.uid);
   console.log(userUid);
@@ -105,7 +108,7 @@ function getAllMessagesForBackend(req, res) {
     res.status(200).json(
       messages
     )
-  })
+  });
 }
 
 function getNewMessagesNumber(req, res) {
@@ -153,5 +156,5 @@ module.exports = {
   getMessagesByUser,
   getNewMessagesNumber,
   updateMessage,
-  getAllMessagesForBackend
+  getAllMessages
 }

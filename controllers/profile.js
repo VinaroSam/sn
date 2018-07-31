@@ -8,7 +8,6 @@ function getProfile (req, res) {
   Product.findById(productId, (err, product) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
     if (!product) return res.status(404).send({message: `El producto no existe`})
-
     res.status(200).send({ product })
   })
 }
@@ -20,7 +19,6 @@ function getProducts (req, res) {
 
     res.status(200).send({ products })
 
-    
   })
 }
 

@@ -17,7 +17,7 @@ const client = new Client();
 const app = express();
 const api = require('./routes');
 
-moment.locale('fr');
+moment.locale('us');
 
 //user controlers
 
@@ -34,8 +34,7 @@ app.engine('.hbs', hbs({
   array
 }))
 
-app.set('view engine', '.hbs')
-
+app.set('view engine', '.hbs');
 app.use(express.static('public'));
 app.use('/api', api)
 
@@ -106,6 +105,7 @@ app.get('/userspanel', (req, res) => {
 app.get('/pnotif', (req, res) => {
   var token = req.query.token;
   var identity = services.sessionToken(token);
+  var profile = services.profile(token);
   if (!identity) {
     res.render('login', {
       message: 'Invalid token, please log in',
@@ -127,7 +127,7 @@ app.get('/pnotif', (req, res) => {
       data.forEach((arr) => {
         arr.forEach((msg) => {
           Object.assign(msg, {
-            messageCreationDate: moment(msg.messageCreationDate).local().fromNow(),
+            messageCreationDate: moment(msg.messageCreationDate).local().format('Do/MM/YYYY à HH:mm'),
           })
         })
       })
@@ -136,7 +136,8 @@ app.get('/pnotif', (req, res) => {
         mails: data,
         identity: identity,
         token: token,
-        layout: 'member'
+        profile: profile,
+        layout: (profile === 'administrator') ? 'admin' : 'member'
       })
     });
 
@@ -162,42 +163,6 @@ app.get('/feed', (req, res) => {
   }
 })
 
-// Personal Vault
-app.get('/policies', (req, res) => {
-  var token = req.query.token;
-  var identity = services.sessionToken(token);
-  let userUid = identity.userUid;
-
-  if (!identity) {
-    res.render('login', {
-      message: 'Invalid token, please log in',
-      layout: 'entry'
-    })
-  } else {
-
-    let data;
-    var args = {
-      headers: {
-        "token": token
-      } // request headers
-    };
-    // get the data in rest from the server
-    client.get("http://localhost:3000/api/insured/" + userUid, args, function(policies, response) {
-
-      policies.policies.forEach((policy) => {
-        Object.assign(policy, {
-          policyDateOfEffect: moment(policy.policyDateOfEffect).local().format('Do MMMM YYYY'),
-        })
-      })
-      res.render('policies', {
-        policies: policies,
-        identity: identity,
-        token: token,
-        layout: 'member'
-      })
-    });
-  }
-})
 
 app.get('/userspanel', (req, res) => {
   var token = req.query.token;
@@ -226,51 +191,11 @@ app.get('/userspanel', (req, res) => {
   })
 })
 
-app.get('/back', (req, res) => {
-  var token = req.query.token;
-  var identity = services.sessionToken(token);
-  var profile = services.profile(token);
-  var args = {
-    headers: {
-      "token": token
-    } // request headers
-  };
-  if (!identity) {
-    res.render('login', {
-      message: 'Invalid token, please log in',
-      layout: 'entry'
-    })
-  } else {
-
-  client.get("http://localhost:3000/api/mailsback", args, function(data, response) {
-    data.forEach((msg) => {
-      Object.assign(msg, {
-        messageCreationDate: moment(msg.messageCreationDate).local().fromNow(),
-      })
-    })
-    var token = req.query.token;
-    args = {
-      headers: {
-        "token": token
-      } // request headers
-    };
-    // get the data in rest from the server
-    client.get("http://localhost:3000/api/user", args, function(clients, response) {
-      res.render('back', {
-        identity: identity,
-        messages: data,
-        clients: clients,
-        token: token,
-        layout: 'exportlayout'
-      })
-    });
-  })
-}
-});
 
 app.get('/newmsg', (req, res) => {
   var token = req.query.token;
   var identity = services.sessionToken(token);
+  var profile = services.profile(token);
   let userUid = identity.userUid;
   var args = {
     headers: {
@@ -284,12 +209,12 @@ app.get('/newmsg', (req, res) => {
     })
   } else {
     client.get("http://localhost:3000/api/user", args, function(clients, response) {
-    res.render('sendmessage', {
+    res.render('newmessage', {
       identity: identity,
       token: token,
       clients: clients,
       userUid: userUid,
-      layout: 'member'
+      layout: (profile === 'administrator') ? 'admin' : 'member'
     })
   });
   }

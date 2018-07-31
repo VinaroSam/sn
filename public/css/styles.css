@@ -1,12 +1,14 @@
 ul#topnav {color: #333;}
 ul#topnav li{display: inline-block}
-.btn {border: 1px solid red}
+.btn {border: 0px solid red}
 ul{list-style-type: none;}
 a, a:link, a:active {color: #009ee0;}
 .demo-navigation li a{padding: 8px 20px!important; color: black!important;}
 .demo-navigation li a i{margin-right: 5px;}
 .demo-navigation li {border-top: 1px solid #ccc;border-bottom: 1px solid #ccc; margin-bottom: -1px;}
 .mdl-layout__header .mdl-layout__drawer-button {color: #000;}
+h2.mainheader {font-size: 1.6em;margin: 0;}
+
 
 ul.displayuser {list-style-type: none; padding: 10px 0 0 10px; margin: 0;}
 ul.displayuser li i{font-size: 45px;}
@@ -51,10 +53,10 @@ ul.nav-pills {
     padding-left: 15px;
 }
 
-.nav-pills li {display: inline-block;}
+.nav-pills li {display: inline-block; margin-right: 10px;}
 
 .nav-pills li a {
-    border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0!important;
     border: 1px solid #ccc;
     font-size: 14px;
     text-decoration: none;
@@ -127,7 +129,7 @@ table.msgtable td {
 
 
 .nav-pills>li>a:hover {
-    color: #000000 !important;
+    
 }
 
 .nav-link-color {

@@ -20,7 +20,7 @@ api.post('/signin', userCtrl.signIn)
 
 //mailbox
 api.get('/mails', msgCtrl.getMessagesByUser);
-api.get('/mailsback', msgCtrl.getAllMessagesForBackend);
+api.get('/mailsback', msgCtrl.getAllMessages);
 api.get('/mailnumber', msgCtrl.getNewMessagesNumber);
 api.post('/postmail', msgCtrl.makeMessage);
 api.put('/mail/:messageId', auth, msgCtrl.updateMessage);

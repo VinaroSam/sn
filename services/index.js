@@ -18,7 +18,7 @@ function createToken(user) {
       step: '0'
     },
     iat: moment().unix(),
-    exp: moment().add(30, 'minutes').unix()
+    exp: moment().add(40, 'minutes').unix()
   }
   return jwt.encode(payload, config.SECRET_TOKEN)
 }
