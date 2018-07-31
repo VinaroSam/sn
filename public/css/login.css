@@ -16,7 +16,7 @@ a, a:link, a:active {color: rgb(0,188,212);}
     background-color: #FFFF;
     box-shadow: 5px 5px 4px #ccc;
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 50%;
     margin-top: -100px;
     /* Half the height */
