@@ -28,8 +28,10 @@
             <div class="form-group">
               <label for="destinataire">Sélectionnez votre destinataire</label>
               <select class="form-control" id="destinataire">
-                <option value="qualycloud">Qualycloud</option>
-              </select>
+                {{#each clients.users}}
+                <option value="{{userUid}}">{{firstName}} {{lastName}}</option>
+                {{/each}}
+              </select>             
             </div>
             <div class="form-group">
               <label for="corps">Ecrivez votre message</label>
@@ -60,7 +62,7 @@
           },
           data: {
             messageSender: "{{userUid}}",
-            messageRecipient: "qualicloud",
+            messageRecipient: $('#destinataire option:selected').val(),
             messageBody: $('#corps').val()
             }
           })

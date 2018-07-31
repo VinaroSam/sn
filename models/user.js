@@ -13,10 +13,10 @@ const UserSchema = new Schema({
     type: String,
     unique: true
   },
-  externalId: {
-    type: String,
-    unique: true
-  },
+  // externalId: {
+  //   type: String,
+  //   unique: true
+  // },
   email: {
     type: String,
     unique: true,
@@ -33,7 +33,7 @@ const UserSchema = new Schema({
   },
   lastLogin: Date,
   profile: String,
-  dateOfBirth: Date,
+  dateOfBirth: String,
   title: String,
   friends: Array
 })

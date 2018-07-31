@@ -143,7 +143,6 @@ app.get('/pnotif', (req, res) => {
   }
 })
 
-
 app.get('/feed', (req, res) => {
   var token = req.query.token;
   var identity = services.sessionToken(token);
@@ -154,7 +153,7 @@ app.get('/feed', (req, res) => {
       layout: 'entry'
     })
   } else {
-    res.render((profile === 'administrator') ? 'insuranceback' : 'insurance', {
+    res.render((profile === 'administrator') ? 'feedadmin' : 'feed', {
       identity: identity,
       token: token,
       profile: profile,
@@ -228,11 +227,21 @@ app.get('/userspanel', (req, res) => {
 })
 
 app.get('/back', (req, res) => {
+  var token = req.query.token;
+  var identity = services.sessionToken(token);
+  var profile = services.profile(token);
   var args = {
     headers: {
-      uid: 'qualicloud'
-    }
-  }
+      "token": token
+    } // request headers
+  };
+  if (!identity) {
+    res.render('login', {
+      message: 'Invalid token, please log in',
+      layout: 'entry'
+    })
+  } else {
+
   client.get("http://localhost:3000/api/mailsback", args, function(data, response) {
     data.forEach((msg) => {
       Object.assign(msg, {
@@ -242,18 +251,48 @@ app.get('/back', (req, res) => {
     var token = req.query.token;
     args = {
       headers: {
-        "token": 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOnsidXNlclVpZCI6InV1aWRfU0pBT05uS1R6IiwiZW1haWwiOiIxQHF1YWxpY2xvdWQuY29tIiwiZmlyc3ROYW1lIjoiT09PSCIsImxhc3ROYW1lIjoiRElFR08iLCJwcm9maWxlIjoibWFuYWdlciIsImV4dGVybmFsSWQiOiJhYXpkZWF6ZWZEIiwic3RlcCI6IjAifSwiaWF0IjoxNTI4MjcxNzAyLCJleHAiOjE1MzM1NDIxMDJ9.HSJKS_Os_QirXslvBbUVRyx2xWs7OtwLhnlSYFbggxU'
+        "token": token
       } // request headers
     };
     // get the data in rest from the server
     client.get("http://localhost:3000/api/user", args, function(clients, response) {
-      res.render('admin', {
+      res.render('back', {
+        identity: identity,
         messages: data,
         clients: clients,
+        token: token,
         layout: 'exportlayout'
       })
-    })
+    });
   })
+}
+});
+
+app.get('/newmsg', (req, res) => {
+  var token = req.query.token;
+  var identity = services.sessionToken(token);
+  let userUid = identity.userUid;
+  var args = {
+    headers: {
+      "token": token
+    } // request headers
+  };
+  if (!identity) {
+    res.render('login', {
+      message: 'Invalid token, please log in',
+      layout: 'entry'
+    })
+  } else {
+    client.get("http://localhost:3000/api/user", args, function(clients, response) {
+    res.render('sendmessage', {
+      identity: identity,
+      token: token,
+      clients: clients,
+      userUid: userUid,
+      layout: 'member'
+    })
+  });
+  }
 })
 
 app.get(/.*/, function(req, res){

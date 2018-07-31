@@ -13,7 +13,7 @@ function createToken(user) {
       firstName: user.firstName,
       lastName: user.lastName,
       profile: user.profile,
-      externalId: user.externalId,
+      // externalId: user.externalId,
       title: user.title,
       step: '0'
     },
@@ -33,16 +33,16 @@ function sessionToken(token) {
   }
 }
 
-function externalId(token) {
-  try {
-    const payload = jwt.decode(token, config.SECRET_TOKEN_DECODE);
-    var sub = payload.sub;
-    var externalId = sub.externalId;
-    return externalId;
-  } catch (err) {
-    return (undefined);
-  }
-}
+// function externalId(token) {
+//   try {
+//     const payload = jwt.decode(token, config.SECRET_TOKEN_DECODE);
+//     var sub = payload.sub;
+//     var externalId = sub.externalId;
+//     return externalId;
+//   } catch (err) {
+//     return (undefined);
+//   }
+// }
 
 function profile(token) {
   try {
@@ -103,6 +103,6 @@ module.exports = {
   decodeToken,
   sessionToken,
   sessionUUID,
-  externalId,
+  // externalId,
   profile
 }

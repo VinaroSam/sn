@@ -4,13 +4,11 @@ const services = require('../services')
 
 function isAuth (req, res, next) {
 
-
   console.log(req.headers.token);
 
   if (!req.headers.token) {
     return res.status(403).send({ message: "Vous n'avez pas l'autorisation" })
   }
-
 
   // check header or url parameters or post parameters for token
   //var token = req.body.token || req.query.token || req.headers['x-access-token'];

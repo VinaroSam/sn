@@ -5,32 +5,36 @@
   }
 </script>
   <script src="/plugins/matchHeight/jquery.matchHeight.js"></script>
-<main class="sinisters mdl-layout__content mdl-color--white">
+<main class=" mdl-layout__content mdl-color--white">
 
-  <div class="demo-upd .mdl-card__title mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+  <div class="innercontent demo-upd .mdl-card__title mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
     <div>
       <h2> Ajouter un Administrateur</h2>
       <form id="myForm" action="/addUsers">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input id="firstName" class="mdl-textfield__input" type="text" name="firstName">
-          <label class="mdl-textfield__label" for="firstName">First name </label>
+        <div class="form-group col-md-6">
+          
+          <label for="firstName">First name: </label>
+          <input id="firstName" class="form-control" type="text" name="firstName">
         </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input id="lastName" class="mdl-textfield__input" type="text" name="lastName">
-          <label class="mdl-textfield__label" for="lastName">Last name</label>
+        <div class="form-group col-md-6">
+          
+          <label  for="lastName">Last name: </label>
+          <input id="lastName"  class="form-control" type="text" name="lastName">
         </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input id="mobile" class="mdl-textfield__input" type="text" name="mobile">
-          <label class="mdl-textfield__label" for="lastName">Mobile</label>
+        <div class="form-group col-md-6">
+          <label for="mobile">Mobile</label>
+          <input id="mobile"  class="form-control" type="text" name="mobile">
+          
         </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input id="email" class="mdl-textfield__input" type="email" name="email">
-          <label class="mdl-textfield__label" for="email">Email</label>
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input id="email"  class="form-control" type="email" name="email">
+          
         </div>
 
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input id="password" class="mdl-textfield__input" type="password" name="password">
-          <label class="mdl-textfield__label" for="password">Mot de passe</label>
+        <div class="form-group col-md-6">
+          <label for="password">Mot de passe</label>
+          <input id="password"  class="form-control" type="password" name="password">
         </div>
 
         <input id="member" type="hidden" name="profile" value="administrator">
@@ -50,19 +54,26 @@
           </div>
           <div class="continfo mdl-card__supporting-text">
             <div class="sinistre-info">
-              <p>Profil : {{profile}}</p>
-              <p>email : {{email}}</p>
-              <p>téléphone : {{mobile}}</p>
-              <p>Nombre d'amis : {{friends.length}}
+              <ul class="profilelist">
+                <li>Profile : {{profile}}</li>
+              <li>email : {{email}}</li>
+              <li>telephone : {{mobile}}</li>
+              <li>Date of birth : {{dateOfBirth}}</li>
+              <li>Friends : {{friends.length}}</li>
+              </ul>
                 <ul>
                   {{#each friends}}
                   <li>{{this}}</li>
                   {{/each}}
-                </ul></p>
+                </ul>
             </div>
+            
           </div>
-          <div class="documentsstate mdl-card__actions mdl-card--border">
-          </div>
+         <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                remove
+              </a>
+            </div>
         </div>
       {{/each}}
 
@@ -70,7 +81,7 @@
     <!-- end new boxes -->
 
   </div>
-  <main>
+  </main>
     <script>
       // <script src = "/plugins/matchHeight/jquery.matchHeight.js" >
     </script>
@@ -99,7 +110,7 @@
           email: $('#email').val(),
           profile: $('#member').val(),
           mobile: $('#mobile').val(),
-          externalId: 'ext_' + guid(),
+          // externalId: 'ext_' + guid(),
           password: $('#password').val()
         }
       })
@@ -119,10 +130,7 @@
       });
     </script>
 
-    <script src="/mdl/material.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   
     <script type="text/javascript" src="/js/strip.pkgd.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/strip.css" />
-    </body>
-
-    </html>
+  

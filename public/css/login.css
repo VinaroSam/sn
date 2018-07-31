@@ -4,6 +4,10 @@ body {
     background-color: #DEDEDE;
 }
 
+a, a:link, a:active {color: rgb(0,188,212);}
+.btn{border: 0px solid #ccc; border-radius: 0; background-color: #333; color: white; cursor: pointer;}
+.form-control{border: 1px solid #ccc; border-radius: 0; margin-bottom: 15px!important;}
+.alert-danger{background-color: white; border-color: red; color: red;}
 .form-signin {
     width: 330px;
     padding: 30px;
@@ -59,3 +63,9 @@ body {
     border: 0;
     cursor: pointer;
 }
+
+.or {text-align: center;position: relative; margin-top: 15px; color: #333;}
+    .or span{background-color: white; z-index: 100; position: relative; padding: 0 5px;}
+    .or:after{border-bottom: 1px solid #333; content: ""; position: relative; display: block;top: -12px; z-index: 50; }
+.or p{margin-bottom: 0;}
+.separ{margin-bottom: 10px;}

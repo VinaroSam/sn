@@ -17,11 +17,8 @@ function makeMessage(req, res) {
     messageTitle: req.body.messageTitle,
     messageBody: req.body.messageBody,
     messageCreationDate: moment().toISOString(),
-    messageStatus: 'nouveau'
+    messageStatus: 'new'
   })
-
-  console.log(msg);
-
 
   msg.save((err) => {
     if (err) {
@@ -73,7 +70,7 @@ function getMessagesByUser(req, res) {
     let archives = [];
     messages.forEach((msg) => {
       if (msg.messageRecipient === userUid) {
-        if (msg.messageStatus === 'nouveau') {
+        if (msg.messageStatus === 'new') {
           nouveaux.push(msg)
         } else {
           archives.push(msg)
@@ -115,7 +112,7 @@ function getNewMessagesNumber(req, res) {
   let userUid = services.sessionUUID(req.headers.token);
   Message.find({
     'messageRecipient': userUid,
-    'messageStatus': 'nouveau'
+    'messageStatus': 'new'
   }, (err, msgs) => {
     if (err) return res.status(500).json({
       message: `Error fetching the record ${err}`

@@ -14,7 +14,7 @@ const MessageSchema = Schema({
   messageTitle: String,
   messageBody: String,
   messageCreationDate: String,
-  messageStatus: String,
+  messageStatus: String
 })
 
 

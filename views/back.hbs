@@ -54,10 +54,10 @@
             method: 'POST',
             dataType: 'json',
             headers: {
-              token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOnsidXNlclVpZCI6InV1aWRfU0pBT05uS1R6IiwiZW1haWwiOiIxQHF1YWxpY2xvdWQuY29tIiwiZmlyc3ROYW1lIjoiT09PSCIsImxhc3ROYW1lIjoiRElFR08iLCJwcm9maWxlIjoibWFuYWdlciIsImV4dGVybmFsSWQiOiJhYXpkZWF6ZWZEIiwic3RlcCI6IjAifSwiaWF0IjoxNTI4MjcxNzAyLCJleHAiOjE1MzM1NDIxMDJ9.HSJKS_Os_QirXslvBbUVRyx2xWs7OtwLhnlSYFbggxU'
+              token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOnsidXNlclVpZCI6InV1aWRfUzFzREVOakVYIiwiZW1haWwiOiJ2aW5hcm8uc2FtQGdtYWlsLmNvbSIsImZpcnN0TmFtZSI6IlZpbmFybyIsImxhc3ROYW1lIjoiU2FtIiwicHJvZmlsZSI6ImFkbWluaXN0cmF0b3IiLCJ0aXRsZSI6Ik1yIiwic3RlcCI6IjAifSwiaWF0IjoxNTMzMDM3ODU5LCJleHAiOjE1MzMwMzk2NTl9.fJ6UPsm36e1G4r8qcK9WSImBpuDHV3X94LUm4EvkGaA'
             },
             data: {
-              messageSender: "Qualycloud",
+              messageSender: '{{identity.firstName}} {{identity.lastName}}',
               messageRecipient:  $('#destinataire option:selected').val(),
               messageBody: $('#corps').val()
               }
@@ -67,7 +67,7 @@
           })
           .done(function(res) {
             console.log('done');
-            window.location.replace("/back")
+            window.location.replace("/back/?token={{token}}")
           });
         })
       });

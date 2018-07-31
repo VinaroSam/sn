@@ -23,7 +23,7 @@
 
                       <!-- Nav tabs -->
                       <p class="buttonadd">
-                        <a href="/nmsg/?token={{token}}">
+                        <a href="/newmsg/?token={{token}}">
                           <button class="mdl-button mdl-js-button">
                             <i class="material-icons ">note_add</i> nouveau
                           </button>
@@ -53,7 +53,7 @@
                                 <th class="firstcol">Correspondant</th>
                                 <th>Message</th>
                                 <th>Réception</th>
-                                <th>Valider</th>
+                                <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -62,7 +62,7 @@
                                 <td>{{messageSender}}</td>
                                 <td>{{messageBody}}</td>
                                 <td>{{messageCreationDate}}</td>
-                                <td><button type="button" value="{{messageid}}" class="btn btn-success valider">Valider</button></td>
+                                <td><button type="button" value="{{messageid}}" class="btn btn-success valider">Archiver</button></td>
                               </tr>
                               {{/forEach}}
                               {{!-- <tr id="mensajes"  onmouseover="hoverColor()" class="table-danger">

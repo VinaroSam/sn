@@ -6,22 +6,22 @@ const bcrypt = require('bcrypt-nodejs')
 const shortid = require('shortid');
 const moment = require('moment');
 
+moment.locale('fr');
 
 
 //Create user
 function signUp(req, res) {
   const user = new User({
     userUid: 'uuid_' + shortid.generate(),
-    externalId: req.body.externalId,
+    // externalId: req.body.externalId,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
     mobile: req.body.mobile,
     password: req.body.password,
     profile: req.body.profile,
-    dateOfBirth: moment(req.body.dateOfBirth).toISOString(),
-    title: req.body.title,
-    entreprise: req.body.entreprise
+    dateOfBirth: moment(req.body.dateOfBirth).local().format('Do MMMM YYYY'),
+    title: req.body.title
   })
 
   console.log(user);
@@ -45,8 +45,6 @@ function signUp(req, res) {
     })
   })
 }
-
-
 
 function signIn(req, res) {
 
