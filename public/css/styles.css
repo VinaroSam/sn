@@ -9,6 +9,7 @@ a, a:link, a:active {color: #009ee0;}
 .mdl-layout__header .mdl-layout__drawer-button {color: #000;}
 h2.mainheader {font-size: 1.6em;margin: 0;}
 
+/* layout*/
 
 ul.displayuser {list-style-type: none; padding: 10px 0 0 10px; margin: 0;}
 ul.displayuser li i{font-size: 45px;}
@@ -23,10 +24,13 @@ ul.displayuser li span {display: block;}
 h2.mdl-card__title-text {font-size: 1.4em; margin-bottom: 0;}
 .profilelist {margin: 0; padding: 0}
 
-.claimforms input[type='text'] {display: block;}
+/* forms */
+
 .formrow label{color: rgb(0,188,212); font-size: 12px;}
 form .form-control {border: 1px solid #a0b4bf; border-radius: 0px;}
-
+.addadminbutton{padding-left: 15px;padding-top: 15px;}
+.addadminbutton input {}
+.btn{border: 0px solid #ccc; border-radius: 0; background-color: #333; color: white; cursor: pointer;}
 
 #newmsg{color: black;}
 

@@ -27,10 +27,11 @@
           <form>
           <div class="formgroup col-md-6">
             <div class="form-group">
-              <label for="destinataire">Sélectionnez votre destinataire</label>
+              <label for="destinataire" style="display: none;">Sélectionnez votre destinataire</label>
               <select class="form-control" id="destinataire">
+                <option value="">Selectionnez votre destinataire</option>
                 {{#each clients.users}}
-                <option value="{{userUid}}" data-messageto="{{firstName}} {{lastName}}">{{firstName}} {{lastName}}</option>
+                <option value="{{userUid}}" data-messageto="{{firstName}} {{lastName}}">- {{firstName}} {{lastName}}</option>
                 {{/each}}
               </select>             
             </div>
