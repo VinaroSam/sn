@@ -33,17 +33,6 @@ function sessionToken(token) {
   }
 }
 
-// function externalId(token) {
-//   try {
-//     const payload = jwt.decode(token, config.SECRET_TOKEN_DECODE);
-//     var sub = payload.sub;
-//     var externalId = sub.externalId;
-//     return externalId;
-//   } catch (err) {
-//     return (undefined);
-//   }
-// }
-
 function profile(token) {
   try {
     const payload = jwt.decode(token, config.SECRET_TOKEN_DECODE);
@@ -71,15 +60,10 @@ function decodeToken(token) {
 
     try {
       const payload = jwt.decode(token, config.SECRET_TOKEN_DECODE)
-
-      //console.log(payload)
-      //console.log('payload')
-
       if (payload.exp <= moment().unix()) {
-        //if (true){
         reject({
           status: 401,
-          message: 'Votre token a expiré'
+          message: 'Your token has expired'
         })
       }
       resolve(payload.sub)
@@ -87,13 +71,10 @@ function decodeToken(token) {
     } catch (err) {
       reject({
         status: 500,
-        message: 'Token non valide'
+        message: 'Invalid token'
       })
     }
   })
-
-  //console.log('DECODED')
-  //console.log(decoded)
 
   return decoded
 }
@@ -103,6 +84,5 @@ module.exports = {
   decodeToken,
   sessionToken,
   sessionUUID,
-  // externalId,
   profile
 }

@@ -1,0 +1,70 @@
+
+<link rel="stylesheet" href="/css/login.css">
+
+
+      <form id="register" action="/addUsers" class="form-register">
+        <h2>Registration</h2>
+        <div class="form-group">
+          
+          <label for="firstName">First name: </label>
+          <input id="firstName" class="form-control" type="text" name="firstName">
+        </div>
+        <div class="form-group">
+          
+          <label  for="lastName">Last name: </label>
+          <input id="lastName"  class="form-control" type="text" name="lastName">
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile</label>
+          <input id="mobile"  class="form-control" type="text" name="mobile">
+          
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email"  class="form-control" type="email" name="email">
+          
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input id="password"  class="form-control" type="password" name="password">
+        </div>
+
+        <input id="member" type="hidden" name="profile" value="member">
+        {{!-- <input id="password" type="hidden" name="password" value="mdp123"> --}}
+        <!-- <input id="externalId" type="hidden" name="externalId"> -->
+        <input id="token" type="hidden" name="token" value="{{token}}">
+        <button class="btn" type="submit" name="button"> Register</button>
+     
+    </form>
+
+
+
+<script type="text/javascript">
+
+$('#register').submit(function(e) {
+    e.preventDefault()
+      var url = "/api/signUp"
+      $.ajax({
+        url: url,
+        method: 'POST',
+        dataType: 'json',
+        headers: {
+          token: '{{token}}'
+        },
+        data: {
+          firstName: $('#firstName').val(),
+          lastName: $('#lastName').val(),
+          email: $('#email').val(),
+          profile: $('#member').val(),
+          mobile: $('#mobile').val(),
+          // externalId: 'ext_' + guid(),
+          password: $('#password').val()
+        }
+      })
+      .done(function(res){
+        window.location.replace('/login')
+      })
+      
+    })
+</script>

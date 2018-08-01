@@ -17,7 +17,7 @@ const client = new Client();
 const app = express();
 const api = require('./routes');
 
-moment.locale('us');
+moment.locale('en-gb');
 
 //user controlers
 
@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json())
 
+// Handlebars
 
 app.engine('.hbs', hbs({
   defaultLayout: 'default',
@@ -38,12 +39,9 @@ app.set('view engine', '.hbs');
 app.use(express.static('public'));
 app.use('/api', api)
 
-// app.get('/', (req, res) => {
-//   res.render('login')
-// })
+// root
 
 app.get('/', (req, res) => {
-
   if (req.query.error == '1') {
     res.render('login', {
       message: 'Invalid login / password',
@@ -52,11 +50,21 @@ app.get('/', (req, res) => {
     })
   } else {
     res.render('home', {
-      identity: identity,
       layout: 'entry'
     })
   }
 })
+
+
+// register
+
+app.get('/register', (req, res) => {
+    res.render('register', {
+      layout: 'entry'
+    })
+})
+
+// login
 
 app.get('/login', (req, res) => {
 
@@ -68,11 +76,12 @@ app.get('/login', (req, res) => {
     })
   } else {
     res.render('login', {
-      identity: identity,
       layout: 'entry'
     })
   }
 })
+
+// admin : Add addministrator
 
 app.get('/userspanel', (req, res) => {
   var token = req.query.token;
@@ -101,7 +110,8 @@ app.get('/userspanel', (req, res) => {
   })
 })
 
-//notifications system (copie de pvault)
+// Messages
+
 app.get('/pnotif', (req, res) => {
   var token = req.query.token;
   var identity = services.sessionToken(token);
@@ -113,15 +123,14 @@ app.get('/pnotif', (req, res) => {
     })
   } else {
 
-    // the token from the query arguments
     var token = req.query.token;
 
     var args = {
       headers: {
         "token": token
-      } // request headers
+      } 
     };
-    // get the data in rest from the server
+   
     client.get("http://localhost:3000/api/mails", args, function(data, response) {
       console.log(data)
       data.forEach((arr) => {
@@ -144,6 +153,8 @@ app.get('/pnotif', (req, res) => {
   }
 })
 
+// User home : post feed
+
 app.get('/feed', (req, res) => {
   var token = req.query.token;
   var identity = services.sessionToken(token);
@@ -164,7 +175,7 @@ app.get('/feed', (req, res) => {
 })
 
 
-app.get('/userspanel', (req, res) => {
+app.get('/members', (req, res) => {
   var token = req.query.token;
   var identity = services.sessionToken(token);
   var profile = services.profile(token);
@@ -175,16 +186,22 @@ app.get('/userspanel', (req, res) => {
   };
   client.get("http://localhost:3000/api/user", args, function(users, response) {
     console.log(users)
+    users.users.forEach((user) => {
+      Object.assign(user, {
+        signupDate: moment(user.signupDate).local().format('Do MMMM YYYY')
+      });
+    });
+
     if (!identity && profile !== 'administrator') {
       res.render('login', {
         message: 'Invalid token, please log in',
         layout: 'entry'
       })
     } else {
-      res.render('addusers', {
+      res.render('members', {
         identity: identity,
         token: token,
-        layout: 'admin',
+        layout: (profile === 'administrator') ? 'admin' : 'member',
         users: users
       })
     }

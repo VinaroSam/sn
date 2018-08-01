@@ -4,11 +4,7 @@ const express = require('express'),
   bodyParser = require('body-parser');
 
 const userCtrl = require('../controllers/user'),
-  
- 
   msgCtrl = require('../controllers/messages'),
- 
-  //  ticketCtrl = require('../controllers/claim'),
   auth = require('../middlewares/auth');
 
 const api = express.Router(),

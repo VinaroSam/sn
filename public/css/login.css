@@ -58,6 +58,65 @@ a, a:link, a:active {color: rgb(0,188,212);}
     border-top-right-radius: 0;
 }
 
+/* register */
+.form-register h2{
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.form-register {
+    width: 430px;
+    padding: 30px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #FFFF;
+    box-shadow: 5px 5px 4px #ccc;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-top: -100px;
+    /* Half the height */
+    margin-left: -215px;
+    /* Half the width */
+}
+
+.form-register .form-signin-heading,
+.form-register .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-register .checkbox {
+    font-weight: normal;
+}
+
+.form-register .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-register .form-control:focus {
+    z-index: 2;
+}
+
+.form-register input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-register input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* login */
+
 #login .btn-block {
     background-color: #93117e;
     border: 0;
