@@ -7,7 +7,7 @@ const shortid = require('shortid'),
   moment = require('moment');
 
 //Create message
-function makeMessage(req, res) {
+function createMessage(req, res) {
   let token = req.headers.token;
   const msg = new Message({
     messageid: 'muid_' + shortid.generate(),
@@ -151,7 +151,7 @@ function updateMessage(req, res) {
 
 
 module.exports = {
-  makeMessage,
+  createMessage,
   getMessagesByUser,
   getNewMessagesNumber,
   updateMessage,
