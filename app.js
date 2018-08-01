@@ -153,26 +153,7 @@ app.get('/mailbox', (req, res) => {
   }
 })
 
-// User home : post feed
-
-// app.get('/feed', (req, res) => {
-//   var token = req.query.token;
-//   var identity = services.sessionToken(token);
-//   var profile = services.profile(token);
-//   if (!identity) {
-//     res.render('login', {
-//       message: 'Invalid token, please log in',
-//       layout: 'entry'
-//     })
-//   } else {
-//     res.render((profile === 'administrator') ? 'feedadmin' : 'feed', {
-//       identity: identity,
-//       token: token,
-//       profile: profile,
-//       layout: (profile === 'administrator') ? 'admin' : 'member'
-//     })
-//   }
-// })
+// display posts
 
 app.get('/feed', (req, res) => {
   var token = req.query.token;
@@ -207,7 +188,7 @@ app.get('/feed', (req, res) => {
   })
 })
 
-
+// display members
 
 app.get('/members', (req, res) => {
   var token = req.query.token;

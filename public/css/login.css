@@ -1,6 +1,8 @@
 body{padding-top:0px;padding-bottom:40px;background-color:#fff;}
 a, a:link, a:active{color:rgb(0,188,212);}
 .btn{border:0px solid #ccc;border-radius:0;background-color:#333;color:white;cursor:pointer;}
+img{display: block; margin-left: auto; margin-right: auto;}
+
 .form-control{border:1px solid #ccc;border-radius:0;margin-bottom:15px!important;}
 .alert-danger{background-color:white;border-color:red;color:red;}
 .form-signin{width:100%;max-width:500px; padding:30px;margin:0 auto;margin-top:40px;background-color:#FFFF;position:relative;top:25%;margin-left:auto;margin-right:auto;}

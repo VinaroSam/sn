@@ -58,3 +58,5 @@ table.msgtable td{color:#333;padding:4px 10px;text-align:left;max-width:0;vertic
 .nav-pills>li>a:hover{}
 .nav-link-color{color:#ffffff;}
 .nav-link{padding:0.4rem 1em;}
+
+.mdl-button{text-transform: capitalize; color: #333;}
