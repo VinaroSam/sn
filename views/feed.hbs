@@ -21,14 +21,15 @@
             <h2 class="mdl-card__title-text">{{postTitle}} </h2>
           </div>
           <div class="continfo mdl-card__supporting-text">
-            <div class="sinistre-info">
+            
               <ul class="profilelist">
-                <li><em>Posted by {{postAuthor}} the {{postCreationDate}}</em></li>
               <li class="postbody">{{postBody}}</li>
-              <li>like : {{postLike}}</li>
+              {{!-- <li>like : {{postLike}}</li> --}}
+              <li class="postfooter"><em>Posted by {{postAuthor}} the {{postCreationDate}}</em></li>
               </ul>
-            </div>
+            
           </div>
+          
         </div>
       {{/each}}
 
@@ -41,6 +42,6 @@
     <script>
       $(function() {
         $('.mdl-card__title-text').matchHeight();
-        $('.continfo').matchHeight();
+        $('.postbody').matchHeight();
       });
     </script>
