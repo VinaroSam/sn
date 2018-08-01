@@ -1,146 +1,60 @@
-ul#topnav {color: #333;}
-ul#topnav li{display: inline-block}
-.btn {border: 0px solid red}
-ul{list-style-type: none;}
-a, a:link, a:active {color: #009ee0;}
-.demo-navigation li a{padding: 8px 20px!important; color: black!important;}
-.demo-navigation li a i{margin-right: 5px;}
-.demo-navigation li {border-top: 1px solid #ccc;border-bottom: 1px solid #ccc; margin-bottom: -1px;}
-.mdl-layout__header .mdl-layout__drawer-button {color: #000;}
-h2.mainheader {font-size: 2em;margin: 0 0 0 10px;}
+ul#topnav{color:#333;}
+ul#topnav li{display:inline-block}
+.btn{border:0px solid red}
+ul{list-style-type:none;}
+a, a:link, a:active{color:#009ee0;}
+.demo-navigation li a{padding:8px 20px!important;color:black!important;}
+.demo-navigation li a i{margin-right:5px;}
+.demo-navigation li{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin-bottom:-1px;}
+.mdl-layout__header .mdl-layout__drawer-button{color:#000;}
+h2.mainheader{font-size:2em;margin:0 0 0 10px;}
 
 /* layout*/
 
-ul.displayuser {list-style-type: none; padding: 10px 0 0 10px; margin: 0;}
-ul.displayuser li i{font-size: 45px;}
-.innercontent {padding: 20px;}
-ul.displayuser li {display: inline-block; font-size: 12px; font-weight: 100; line-height: 16px; height: 48px; }
-ul.displayuser li:first-child {margin-right: 0px;}
-ul.displayuser .useremail {font-weight: normal;}
-ul.displayuser li span {display: block;}
-.demo-navigation ul {list-style-type: none; padding: 0px 0 0 0; margin: 0}
-.demo-card-wide{margin-bottom: 15px; float: left; margin-right: 8px;}
-.mdl-card__title {border-bottom: 1px solid #f2f2f2;}
-h2.mdl-card__title-text {font-size: 1em; margin-bottom: 0;}
-h2.mdl-card__title-text span {font-size: 1em; margin-bottom: 0;}
-.profilelist {margin: 0; padding: 0}
+ul.displayuser{list-style-type:none;padding:10px 0 0 10px;margin:0;}
+ul.displayuser li i{font-size:45px;}
+.innercontent{padding:20px;}
+ul.displayuser li{display:inline-block;font-size:12px;font-weight:100;line-height:16px;height:48px;}
+ul.displayuser li:first-child{margin-right:0px;}
+ul.displayuser .useremail{font-weight:normal;}
+ul.displayuser li span{display:block;}
+.demo-navigation ul{list-style-type:none;padding:0px 0 0 0;margin:0}
+.demo-card-wide{margin-bottom:15px;float:left;margin-right:8px;}
+.mdl-card__title{border-bottom:1px solid #f2f2f2;}
+h2.mdl-card__title-text{font-size:1em;margin-bottom:0;}
+h2.mdl-card__title-text span{font-size:1em;margin-bottom:0;}
+.profilelist{margin:0;padding:0}
 
 /* forms */
 
-.formrow label{color: rgb(0,188,212); font-size: 12px;}
-form .form-control {border: 1px solid #a0b4bf; border-radius: 0px;}
-.addadminbutton{padding-left: 15px;padding-top: 15px;}
-.addadminbutton input {}
-.btn{border: 0px solid #ccc; border-radius: 0; background-color: #333; color: white; cursor: pointer;}
-
-#newmsg{color: black;}
-
-.mdl-layout__header-row .mdl-badge[data-badge]:after{
-    background-color: red;
-    width: 15px;
-    height: 15px;
-    color: white;
-    top: -6px;
-    font-size: 9px;
-    border: 1px solid white;
-}
-
+.formrow label{color:rgb(0,188,212);font-size:12px;}
+form .form-control{border:1px solid #a0b4bf;border-radius:0px;}
+.addadminbutton{padding-left:15px;padding-top:15px;}
+.addadminbutton input{}
+.btn{border:0px solid #ccc;border-radius:0;background-color:#333;color:white;cursor:pointer;}
+#newmsg{color:black;}
+.mdl-layout__header-row .mdl-badge[data-badge]:after{background-color:red;width:15px;height:15px;color:white;top:-6px;font-size:9px;border:1px solid white;}
 
 /* Messages */
 
-.outercontent {
-    padding: 10px;
-}
-
-ul.nav-pills {
-    margin-top: 0px;
-    border-bottom: 1px solid #ccc;
-    padding-left: 15px;
-}
-
-.nav-pills li {display: inline-block; margin-right: 10px;}
-
-.nav-pills li a {
-    border-radius: 4px 4px 0 0!important;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    text-decoration: none;
-    display: block;
-    margin-bottom: -1px;
-}
-
-.nav-pills li a.nav-link.active {
-    border-radius: 4px 4px 0 0;
-    background-color: #999!important;
-    color: white;
-}
-
-.nav-pills li a.nav-link.active:hover {
-    color: white!important;
-}
-
-.tab-content {
-    padding: 0;
-}
-
-.table-responsive {
-    padding-top: 15px;
-}
-.tab-pane {display: none;}
-.active{display: block}
-
-.msgtable {
-    margin-top: 15px;
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-table.msgtable td {
-    white-space: normal;
-}
-
-.msgtable .firstcol {
-    width: 140px;
-}
-
-.msgtable .datecol {
-    width: 100px;
-}
-
-.msgtable thead tr {
-    background-color: #999;
-}
-
-.msgtable thead th {
-    color: white;
-    text-align: left;
-    padding: 5px 10px;
-    height: auto;
-    font-weight: normal;
-}
-
-table.msgtable td {
-    color: #333;
-    padding: 4px 10px;
-    text-align: left;
-    max-width: 0;
-    vertical-align: top;
-    height: auto;
-}
-
-.msgtable .tdbody {
-    white-space: normal;
-}
-
-
-.nav-pills>li>a:hover {
-    
-}
-
-.nav-link-color {
-    color: #ffffff;
-}
-
-.nav-link {
-    padding: 0.4rem 1em;
-}
+.outercontent{padding:10px;}
+ul.nav-pills{margin-top:0px;border-bottom:1px solid #ccc;padding-left:15px;}
+.nav-pills li{display:inline-block;margin-right:10px;}
+.nav-pills li a{border-radius:4px 4px 0 0!important;border:1px solid #ccc;font-size:14px;text-decoration:none;display:block;margin-bottom:-1px;}
+.nav-pills li a.nav-link.active{border-radius:4px 4px 0 0;background-color:#999!important;color:white;}
+.nav-pills li a.nav-link.active:hover{color:white!important;}
+.tab-content{padding:0;}
+.table-responsive{padding-top:15px;}
+.tab-pane{display:none;}
+.active{display:block}
+.msgtable{margin-top:15px;width:100%;margin-bottom:15px;}
+table.msgtable td{white-space:normal;}
+.msgtable .firstcol{width:140px;}
+.msgtable .datecol{width:100px;}
+.msgtable thead tr{background-color:#999;}
+.msgtable thead th{color:white;text-align:left;padding:5px 10px;height:auto;font-weight:normal;}
+table.msgtable td{color:#333;padding:4px 10px;text-align:left;max-width:0;vertical-align:top;height:auto;}
+.msgtable .tdbody{white-space:normal;}
+.nav-pills>li>a:hover{}
+.nav-link-color{color:#ffffff;}
+.nav-link{padding:0.4rem 1em;}

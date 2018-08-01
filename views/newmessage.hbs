@@ -17,7 +17,7 @@
       </div>
       <div class="outercontent mdl-color--grey-100">
         <p class="buttonadd">
-          <a href="/pnotif/?token={{token}}">
+          <a href="/mailbox/?token={{token}}">
             <button class="mdl-button mdl-js-button mdl-color-text--black-900">
               <i class="material-icons ">folder</i> Mailbox
             </button>
@@ -75,7 +75,7 @@
         })
         .done(function(res) {
           console.log('done');
-          window.location.replace("/pnotif/?token={{token}}")
+          window.location.replace("/mailbox/?token={{token}}")
         });
       })
     });

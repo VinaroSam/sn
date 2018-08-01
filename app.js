@@ -112,7 +112,7 @@ app.get('/userspanel', (req, res) => {
 
 // Messages
 
-app.get('/pnotif', (req, res) => {
+app.get('/mailbox', (req, res) => {
   var token = req.query.token;
   var identity = services.sessionToken(token);
   var profile = services.profile(token);
@@ -136,7 +136,7 @@ app.get('/pnotif', (req, res) => {
       data.forEach((arr) => {
         arr.forEach((msg) => {
           Object.assign(msg, {
-            messageCreationDate: moment(msg.messageCreationDate).local().format('Do/MM/YYYY à HH:mm'),
+            messageCreationDate: moment(msg.messageCreationDate).local().format('DD/MM/YYYY - HH:mm'),
           })
         })
       })

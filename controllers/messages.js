@@ -57,7 +57,7 @@ function getMessagesByUser(req, res) {
         "messageRecipient": userUid
       },
       {
-        "messageSender": userUid
+        "messageOwnerUid": userUid
       }
     ]
   }, (err, messages) => {
