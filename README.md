@@ -1,1 +1,1 @@
-Project Identité mutuelle
+Project social network
