@@ -13,7 +13,7 @@
     <div class="innermain">
 
       <div class="mdl-card__title mdl-card--expand">
-        <h2 class="mainheader">Send a message to a member</h2>
+        <h2 class="mainheader">Write a post</h2>
       </div>
       <div class="outercontent mdl-color--grey-100">
         <p class="buttonadd">
@@ -27,19 +27,15 @@
           <form>
           <div class="formgroup col-md-6">
             <div class="form-group">
-              <label for="destinataire" style="display: none;">Select the recipient</label>
-              <select class="form-control" id="destinataire">
-                <option value="">Select the recipient</option>
-                {{#each clients.users}}
-                <option value="{{userUid}}" data-messageto="{{firstName}} {{lastName}}">- {{firstName}} {{lastName}}</option>
-                {{/each}}
-              </select>             
+              <label for="posttitle">Your post title</label>
+                <input type="text" class="form-control" name="posttitle" id="posttitle">
             </div>
+
             <div class="form-group">
-              <label for="corps">Write your message</label>
-              <textarea class="form-control" id="corps" rows="5"></textarea>
+              <label for="postbody">Ecrivez votre post</label>
+              <textarea class="form-control" name="postbody" id="postbody" rows="5"></textarea>
             </div>
-            <button id="submit" class="btn mb-2" type="submit" name="button">Send your message</button>
+            <button id="submit" class="btn mb-2" type="submit" name="button">Envoyer votre message</button>
           </div>
           </form>
           </div>
@@ -56,18 +52,17 @@
       $('#submit').click(function(event){
         event.preventDefault();
         $.ajax({
-          url: '/api/postmail/',
+          url: '/api/createpost/',
           method: 'POST',
           dataType: 'json',
           headers: {
             token: '{{token}}'
           },
           data: {
-            messageSender: "{{userUid}}",
-            messageFrom: "{{identity.firstName}} {{identity.lastName}}",
-            messageRecipient: $('#destinataire option:selected').val(),
-            messageTo: $('#destinataire option:selected').data("messageto"),
-            messageBody: $('#corps').val()
+            // messageSender: "{{userUid}}",
+            postAuthor: "{{identity.firstName}} {{identity.lastName}}",
+            postTitle: $('#posttitle').val(),
+            postBody: $('#postbody').val()
             }
           })
         .fail(function () {
@@ -75,7 +70,7 @@
         })
         .done(function(res) {
           console.log('done');
-          window.location.replace("/pnotif/?token={{token}}")
+          window.location.replace("/feed/?token={{token}}")
         });
       })
     });

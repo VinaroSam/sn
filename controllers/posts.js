@@ -1,46 +1,42 @@
 'use strict'
 
-const Message = require('../models/message')
+const Post = require('../models/posts')
 const services = require('../services')
 const bcrypt = require('bcrypt-nodejs')
 const shortid = require('shortid'),
   moment = require('moment');
 
 //Create message
-function makeMessage(req, res) {
+function makePost(req, res) {
   let token = req.headers.token;
-  const msg = new Message({
-    messageid: 'muid_' + shortid.generate(),
-    messageOwnerUid: services.sessionUUID(token),
-    messageRecipient: req.body.messageRecipient,
-    messageTitle: req.body.messageTitle,
-    messageBody: req.body.messageBody,
-    messageFullName: req.body.messageFullName,
-    messageFrom: req.body.messageFrom,
-    messageTo: req.body.messageTo,
-    messageCreationDate: moment().toISOString(),
-    messageStatus: 'new'
+  const postit = new Post({
+    postid: 'puid_' + shortid.generate(),
+    postOwnerUid: services.sessionUUID(token),
+    postAuthor: req.body.postAuthor,
+    postTitle: req.body.postTitle,
+    postBody: req.body.postBody,
+    postCreationDate: moment().toISOString()
   })
 
-  msg.save((err) => {
+  postit.save((err) => {
     if (err) {
       console.log("in error - claim.js - return 500")
       return res.status(500).send({
         message: 'error'
       })
     }
-    console.log(msg.messageid)
+    console.log(postit.messageid)
     console.log("not error return 201 - message success")
     return res.status(201).send({
       message: 'sucess',
-      msg: msg.messageid
+      postit: postit.postid
     })
   })
 }
 
 
 
-function getMessagesByUser(req, res) {
+function getPostsByUser(req, res) {
   console.log(typeof req.headers.uid)
   console.log(services.sessionUUID(req.headers.token))
   let userUid;
@@ -52,7 +48,7 @@ function getMessagesByUser(req, res) {
     console.log("2")
   }
   console.log(userUid)
-  Message.find({
+  Post.find({
     $or: [{
         "messageRecipient": userUid
       },
@@ -110,50 +106,7 @@ function getAllMessages(req, res) {
   });
 }
 
-function getNewMessagesNumber(req, res) {
-  let userUid = services.sessionUUID(req.headers.token);
-  Message.find({
-    'messageRecipient': userUid,
-    'messageStatus': 'new'
-  }, (err, msgs) => {
-    if (err) return res.status(500).json({
-      message: `Error fetching the record ${err}`
-    })
-    if (!msgs) return res.status(404).json({
-      message: 'Not existent messages'
-    })
-    let number = msgs.length
-    console.log('messages : ' + msgs[0])
-    res.status(200).json({
-      number
-    })
-  })
-}
-
-function updateMessage(req, res) {
-  let messageId = req.params.messageId;
-  console.log(messageId)
-  let update = req.body;
-  console.log(update)
-
-  Message.findOneAndUpdate({
-    'messageid': messageId
-  }, update, (err, messageUpdated) => {
-    if (err) res.status(500).json({
-      message: `Error updating message: ${err}`
-    })
-
-    res.status(200).json({
-      message: messageUpdated
-    })
-  })
-}
-
 
 module.exports = {
-  makeMessage,
-  getMessagesByUser,
-  getNewMessagesNumber,
-  updateMessage,
-  getAllMessages
+  makePost
 }

@@ -5,6 +5,7 @@ const express = require('express'),
 
 const userCtrl = require('../controllers/user'),
   msgCtrl = require('../controllers/messages'),
+  postCtrl = require('../controllers/posts'),
   auth = require('../middlewares/auth');
 
 const api = express.Router(),
@@ -20,6 +21,10 @@ api.get('/mailsback', msgCtrl.getAllMessages);
 api.get('/mailnumber', msgCtrl.getNewMessagesNumber);
 api.post('/postmail', msgCtrl.makeMessage);
 api.put('/mail/:messageId', auth, msgCtrl.updateMessage);
+
+  // posts
+
+api.post('/createpost', postCtrl.makePost);
 
 // get all users
 api.get('/user', auth, userCtrl.getUsers)

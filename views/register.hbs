@@ -186,6 +186,11 @@ $('#register').submit(function(e) {
     e.preventDefault()
       var url = "/api/signUp"
       $.ajax({
+        statusCode: {
+        500: function() {
+          alert( "A user with this email already exist" );
+        }
+        },
         url: url,
         method: 'POST',
         dataType: 'json',

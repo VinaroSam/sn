@@ -91,10 +91,10 @@ function signIn(req, res) {
 function getUsers(req, res) {
   User.find({}, (err, users) => {
     if (err) return res.status(500).send({
-      message: `Error al realizar la petición: ${err}`
+      message: `Error can't make this request: ${err}`
     })
     if (!users) return res.status(404).send({
-      message: 'No existen usuarios'
+      message: "This user doesn't exist"
     })
 
     res.status(200).send({
@@ -123,11 +123,11 @@ function getUser(req, res) {
     }
   ]).exec((err, user) => {
     if (err) return res.status(500).send({
-      message: `Error al realizar la petición: ${err}`
+      message: `Error can't do this request: ${err}`
     })
     if (!user) {
       return res.status(404).send({
-        message: `El user no existe`
+        message: `This user doesn't existe`
       })
     } else {
       res.status(200).send({

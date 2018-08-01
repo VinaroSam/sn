@@ -237,6 +237,36 @@ app.get('/newmsg', (req, res) => {
   }
 })
 
+// Create a post
+
+app.get('/post', (req, res) => {
+  var token = req.query.token;
+  var identity = services.sessionToken(token);
+  var profile = services.profile(token);
+  let userUid = identity.userUid;
+  var args = {
+    headers: {
+      "token": token
+    } // request headers
+  };
+  if (!identity) {
+    res.render('login', {
+      message: 'Invalid token, please log in',
+      layout: 'entry'
+    })
+  } else {
+    client.get("http://localhost:3000/api/user", args, function(clients, response) {
+    res.render('post', {
+      identity: identity,
+      token: token,
+      clients: clients,
+      userUid: userUid,
+      layout: (profile === 'administrator') ? 'admin' : 'member'
+    })
+  });
+  }
+})
+
 app.get(/.*/, function(req, res){
   res.end("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Error</title></head><body><h1>www.vinaro.me</h1><h2>Error 404 : </h2><p>The requested URL " + req.url + " was not found on this server.</p><br><p><button onclick='window.history.back()' style='padding: 10px; border: 1px solid #ccc; cursor: pointer;'> &lt; Page precedente</button> </p></body></html>")
 });
