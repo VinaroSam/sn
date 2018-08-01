@@ -1,140 +1,44 @@
- <!-- body.... Central  Contents -->
-
-<main class="mainhome mdl-layout__content mdl-color--grey-200">
-    <div class="demo-upd mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-        <div class="innermain">
-            <div class="mdl-card__title mdl-card--expand">
-                <h2  class="mainheader">Feeds : {{profile}}</h2>
+<script type="text/javascript">
+  if (localStorage.token === 'undefined') {
+    console.log('cliam : token not defined')
+    window.location.replace("/login")
+  }
+</script>
+  <script src="/plugins/matchHeight/jquery.matchHeight.js"></script>
+  <style>
+      .demo-card-wide{margin-right: 14px;}
+  </style>
+<main class=" mdl-layout__content mdl-color--white">
+  
+  <div class="innercontent demo-upd .mdl-card__title mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+    <h2 class="mainheader">All feeds</h2>
+    <div class="clearfix">
+      {{#each posts}}
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp mdl-cell--4-col mdl-cell--12-col-tablet mdl-cell--6-col-desktop">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">{{postAuthor}} {{postCreationDate}} </h2>
+          </div>
+          <div class="continfo mdl-card__supporting-text">
+            <div class="sinistre-info">
+              <ul class="profilelist">
+                <li>title : {{postTitle}}</li>
+              <li>Post : {{postBody}}</li>
+              <li>like : {{postLike}}</li>
+              </ul>
             </div>
-        <div class="mdl-card__title mdl-color--grey-100">
-            <div class="insurance0 demo-card-wide mdl-card  mdl-cell mdl-shadow--2dp mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title messages">
-                    <h2 class="mdl-card__title-text">Contrats <span class="unread">2</span></h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Retrouvez vos contrats d'indemnités hospitalières.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/policies/?token={{token}}">
-                    Voir &gt;
-                    </a>
-                </div>
-            </div>
-
-            <div class="insurance1 demo-card-wide mdl-card  mdl-cell mdl-shadow--2dp mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Sinistres</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Déclarez et consultez vos demandes d'indemités hospitalières.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a  href="/claims/?token={{token}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    Voir &gt;
-                    </a>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="mdl-card__title mdl-color--grey-100">
-            <div class="insurance2 demo-card-wide mdl-card  mdl-cell mdl-shadow--2dp mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Indemnités</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Consultez les indemnités qui vous ont été versées.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a href="/payments/?token={{token}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/pnotif/?token={{token}}">
-                    Voir &gt;
-                    </a>
-                </div>
-            </div>
-            
-            <div class="dashboard1 demo-card-wide mdl-card mdl-cell mdl-shadow--2dp mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Messages</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Recevez vos informations confidentielles et communiquez avec cette messagerie.
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a href="/pnotif/?token={{token}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    Voir &gt;
-                    </a>
-                </div>
-            </div>
-        </div>
-            <div class="mdl-card__title mdl-color--grey-100">
-            <div class="vaultService0 demo-card-wide mdl-card  mdl-cell mdl-shadow--2dp mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title messages">
-                    <h2 class="mdl-card__title-text">Documents</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Accédez à vos documents et fichiers personnels. 
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/pvault/?token={{token}}">
-                    Voir &gt;
-                    </a>
-                </div>
-            </div>
-
-            <div class="vaultService1 demo-card-wide mdl-card  mdl-cell mdl-shadow--2dp mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">Données personnelles</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Gérez et consultez vos données personnelles. 
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a  href="/pdata/?token={{token}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    Voir &gt;
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-
-        {{!-- <div class="mdl-card__title mdl-color--grey-100">
-            <div class="iconSouscription demo-card-wide mdl-card  mdl-cell mdl-shadow--2dp mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                <div class="mdl-card__title messages">
-                    <h2 class="mdl-card__title-text">Souscription</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Mauris sagittis pellentesque lacus eleifend lacinia...
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/souscription/?token={{token}}">
-                    Voir &gt;
-                    </a>
-                </div>
-            </div>
-
-            <div class="vaultService1  mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
-                
-            </div>
-        </div> --}}
-
+      {{/each}}
 
     </div>
-</main>
+    <!-- end new boxes -->
 
- <!-- end central contents -->
+  </div>
+  </main>
 
- <script>
-    $(".demo-card-wide").click(function() {
-        window.location = $(this).find("a").attr("href"); 
-        return false;
-    });
-</script>
-
-<script src="/plugins/matchHeight/jquery.matchHeight.js"></script>
-<script>
-    $(function(){
-      $('.mdl-card__supporting-text').matchHeight();
-    });
-</script>
-
-
-
+    <script>
+      $(function() {
+        $('.mdl-card__title-text').matchHeight();
+        $('.continfo').matchHeight();
+      });
+    </script>

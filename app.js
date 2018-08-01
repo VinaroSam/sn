@@ -155,24 +155,58 @@ app.get('/pnotif', (req, res) => {
 
 // User home : post feed
 
+// app.get('/feed', (req, res) => {
+//   var token = req.query.token;
+//   var identity = services.sessionToken(token);
+//   var profile = services.profile(token);
+//   if (!identity) {
+//     res.render('login', {
+//       message: 'Invalid token, please log in',
+//       layout: 'entry'
+//     })
+//   } else {
+//     res.render((profile === 'administrator') ? 'feedadmin' : 'feed', {
+//       identity: identity,
+//       token: token,
+//       profile: profile,
+//       layout: (profile === 'administrator') ? 'admin' : 'member'
+//     })
+//   }
+// })
+
 app.get('/feed', (req, res) => {
   var token = req.query.token;
   var identity = services.sessionToken(token);
   var profile = services.profile(token);
-  if (!identity) {
-    res.render('login', {
-      message: 'Invalid token, please log in',
-      layout: 'entry'
-    })
-  } else {
-    res.render((profile === 'administrator') ? 'feedadmin' : 'feed', {
-      identity: identity,
-      token: token,
-      profile: profile,
-      layout: (profile === 'administrator') ? 'admin' : 'member'
-    })
-  }
+  var args = {
+    headers: {
+      "token": token
+    } // request headers
+  };
+  client.get("http://localhost:3000/api/posts", args, function(posts, response) {
+    console.log(posts)
+    posts.forEach((post) => {
+      Object.assign(post, {
+        postCreationDate: moment(post.postCreationDate).local().format('Do MMMM YYYY HH:mm')
+      });
+    });
+
+    if (!identity && profile !== 'administrator') {
+      res.render('login', {
+        message: 'Invalid token, please log in',
+        layout: 'entry'
+      })
+    } else {
+      res.render('feed', {
+        identity: identity,
+        token: token,
+        layout: (profile === 'administrator') ? 'admin' : 'member',
+        posts: posts
+      })
+    }
+  })
 })
+
 
 
 app.get('/members', (req, res) => {
@@ -208,6 +242,7 @@ app.get('/members', (req, res) => {
   })
 })
 
+// mailbox create new message
 
 app.get('/newmsg', (req, res) => {
   var token = req.query.token;

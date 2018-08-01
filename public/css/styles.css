@@ -7,7 +7,7 @@ a, a:link, a:active {color: #009ee0;}
 .demo-navigation li a i{margin-right: 5px;}
 .demo-navigation li {border-top: 1px solid #ccc;border-bottom: 1px solid #ccc; margin-bottom: -1px;}
 .mdl-layout__header .mdl-layout__drawer-button {color: #000;}
-h2.mainheader {font-size: 1.6em;margin: 0;}
+h2.mainheader {font-size: 2em;margin: 0 0 0 10px;}
 
 /* layout*/
 
@@ -21,7 +21,8 @@ ul.displayuser li span {display: block;}
 .demo-navigation ul {list-style-type: none; padding: 0px 0 0 0; margin: 0}
 .demo-card-wide{margin-bottom: 15px; float: left; margin-right: 8px;}
 .mdl-card__title {border-bottom: 1px solid #f2f2f2;}
-h2.mdl-card__title-text {font-size: 1.4em; margin-bottom: 0;}
+h2.mdl-card__title-text {font-size: 1em; margin-bottom: 0;}
+h2.mdl-card__title-text span {font-size: 1em; margin-bottom: 0;}
 .profilelist {margin: 0; padding: 0}
 
 /* forms */

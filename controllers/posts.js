@@ -15,6 +15,7 @@ function makePost(req, res) {
     postAuthor: req.body.postAuthor,
     postTitle: req.body.postTitle,
     postBody: req.body.postBody,
+    postLike: req.body.postLike,
     postCreationDate: moment().toISOString()
   })
 
@@ -34,7 +35,20 @@ function makePost(req, res) {
   })
 }
 
-
+function getAllPosts(req, res){
+    Post.find({}, (err, posts) => {
+        if (err) return res.status(500).json({
+          message: `Error fetching the record ${err}`
+        })
+        if (!posts) return res.status(404).json({
+          message: 'Not existent messages'
+        })
+        console.log(posts);
+        res.status(200).json(
+          posts
+        )
+      }).sort({postCreationDate: -1});
+}
 
 function getPostsByUser(req, res) {
   console.log(typeof req.headers.uid)
@@ -108,5 +122,6 @@ function getAllMessages(req, res) {
 
 
 module.exports = {
-  makePost
+  makePost,
+  getAllPosts
 }

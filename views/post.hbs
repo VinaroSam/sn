@@ -16,26 +16,20 @@
         <h2 class="mainheader">Write a post</h2>
       </div>
       <div class="outercontent mdl-color--grey-100">
-        <p class="buttonadd">
-          <a href="/pnotif/?token={{token}}">
-            <button class="mdl-button mdl-js-button mdl-color-text--black-900">
-              <i class="material-icons ">folder</i> Mailbox
-            </button>
-            </a>
-        </p>
+        
         <div class="container">
           <form>
           <div class="formgroup col-md-6">
             <div class="form-group">
-              <label for="posttitle">Your post title</label>
+              <label for="posttitle">Title</label>
                 <input type="text" class="form-control" name="posttitle" id="posttitle">
             </div>
 
             <div class="form-group">
-              <label for="postbody">Ecrivez votre post</label>
+              <label for="postbody">Your post</label>
               <textarea class="form-control" name="postbody" id="postbody" rows="5"></textarea>
             </div>
-            <button id="submit" class="btn mb-2" type="submit" name="button">Envoyer votre message</button>
+            <button id="submit" class="btn mb-2" type="submit" name="button">Send</button>
           </div>
           </form>
           </div>
@@ -62,7 +56,8 @@
             // messageSender: "{{userUid}}",
             postAuthor: "{{identity.firstName}} {{identity.lastName}}",
             postTitle: $('#posttitle').val(),
-            postBody: $('#postbody').val()
+            postBody: $('#postbody').val(),
+            postLike: 0
             }
           })
         .fail(function () {

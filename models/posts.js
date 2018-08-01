@@ -10,6 +10,7 @@ const PostSchema = Schema({
   postTitle: String,
   postBody: String,
   postCreationDate: String,
+  postLike: Number,
   postStatus: String
 })
 

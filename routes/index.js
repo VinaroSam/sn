@@ -25,6 +25,7 @@ api.put('/mail/:messageId', auth, msgCtrl.updateMessage);
   // posts
 
 api.post('/createpost', postCtrl.makePost);
+api.get('/posts', postCtrl.getAllPosts)
 
 // get all users
 api.get('/user', auth, userCtrl.getUsers)
