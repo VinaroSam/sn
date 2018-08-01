@@ -1,133 +1,28 @@
-body {
-    padding-top: 0px;
-    padding-bottom: 40px;
-    background-color: #DEDEDE;
-}
-
-a, a:link, a:active {color: rgb(0,188,212);}
-.btn{border: 0px solid #ccc; border-radius: 0; background-color: #333; color: white; cursor: pointer;}
-.form-control{border: 1px solid #ccc; border-radius: 0; margin-bottom: 15px!important;}
-.alert-danger{background-color: white; border-color: red; color: red;}
-.form-signin {
-    width: 330px;
-    padding: 30px;
-    margin: 0 auto;
-    margin-top: 40px;
-    background-color: #FFFF;
-    box-shadow: 5px 5px 4px #ccc;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    margin-top: -100px;
-    /* Half the height */
-    margin-left: -165px;
-    /* Half the width */
-}
-
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-    margin-bottom: 10px;
-}
-
-.form-signin .checkbox {
-    font-weight: normal;
-}
-
-.form-signin .form-control {
-    position: relative;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.form-signin .form-control:focus {
-    z-index: 2;
-}
-
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-/* register */
-.form-register h2{
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #333;
-}
-
-.form-register {
-    width: 380px;
-    padding: 30px;
-    margin: 0 auto;
-    margin-top: 40px;
-    background-color: #FFFF;
-    box-shadow: 5px 5px 4px #ccc;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    margin-top: -100px;
-    /* Half the height */
-    margin-left: -190px;
-    /* Half the width */
-}
-
-.form-register .form-signin-heading,
-.form-register .checkbox {
-    margin-bottom: 10px;
-}
-
-.form-register .checkbox {
-    font-weight: normal;
-}
-
-.form-register .form-control {
-    position: relative;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.form-register .form-control:focus {
-    z-index: 2;
-}
-
-.form-register input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.form-register input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-/* login */
-
-#login .btn-block {
-    background-color: #93117e;
-    border: 0;
-    cursor: pointer;
-}
-
-.or {text-align: center;position: relative; margin-top: 15px; color: #333;}
-    .or span{background-color: white; z-index: 100; position: relative; padding: 0 5px;}
-    .or:after{border-bottom: 1px solid #333; content: ""; position: relative; display: block;top: -12px; z-index: 50; }
-.or p{margin-bottom: 0;}
-.separ{margin-bottom: 10px;}
-
-.formsubmit{padding-top: 15px;}
-.formsubmit span{display: inline-block;margin-left: 100px;}
+body{padding-top:0px;padding-bottom:40px;background-color:#fff;}
+a, a:link, a:active{color:rgb(0,188,212);}
+.btn{border:0px solid #ccc;border-radius:0;background-color:#333;color:white;cursor:pointer;}
+.form-control{border:1px solid #ccc;border-radius:0;margin-bottom:15px!important;}
+.alert-danger{background-color:white;border-color:red;color:red;}
+.form-signin{width:100%;max-width:500px; padding:30px;margin:0 auto;margin-top:40px;background-color:#FFFF;position:relative;top:25%;margin-left:auto;margin-right:auto;}
+.form-signin .form-signin-heading,.form-signin .checkbox{margin-bottom:10px;}
+.form-signin .checkbox{font-weight:normal;}
+.form-signin .form-control{position:relative;height:auto;-webkit-box-sizing:border-box;box-sizing:border-box;padding:10px;font-size:16px;}
+.form-signin .form-control:focus{z-index:2;}
+.form-signin input[type="email"]{margin-bottom:-1px;border-bottom-right-radius:0;border-bottom-left-radius:0;}
+.form-signin input[type="password"]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0;}
+.form-register h2{margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #333;}
+.form-register{width:100%;max-width:500px;padding:30px;margin:0 auto;margin-top:40px;background-color:#FFFF;position:relative;top:25%;margin-top:40px;margin-left:auto;margin-right:auto;}
+.form-register .form-signin-heading,.form-register .checkbox{margin-bottom:10px;}
+.form-register .checkbox{font-weight:normal;}
+.form-register .form-control{position:relative;height:auto;-webkit-box-sizing:border-box;box-sizing:border-box;padding:10px;font-size:16px;}
+.form-register .form-control:focus{z-index:2;}
+.form-register input[type="email"]{margin-bottom:-1px;border-bottom-right-radius:0;border-bottom-left-radius:0;}
+.form-register input[type="password"]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0;}
+#login .btn-block{background-color:#93117e;border:0;cursor:pointer;}
+.or{text-align:center;position:relative;margin-top:15px;color:#333;}
+ .or span{background-color:white;z-index:100;position:relative;padding:0 5px;}
+ .or:after{border-bottom:1px solid #333;content:"";position:relative;display:block;top:-12px;z-index:50;}
+.or p{margin-bottom:0;}
+.separ{margin-bottom:10px;}
+.formsubmit{padding-top:15px;}
+.formsubmit span{display:inline-block;margin-left:100px;}
