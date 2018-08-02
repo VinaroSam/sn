@@ -62,3 +62,6 @@ table.msgtable td{color:#333;padding:4px 10px;text-align:left;max-width:0;vertic
 .mdl-button{text-transform: capitalize; color: #333;}
 
 .postbody{min-height: 90px;}
+
+/* members */
+.mdl-card__supporting-text{color: #333}
