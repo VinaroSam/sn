@@ -13,12 +13,11 @@ function createToken(user) {
       firstName: user.firstName,
       lastName: user.lastName,
       profile: user.profile,
-      // externalId: user.externalId,
       title: user.title,
       step: '0'
     },
     iat: moment().unix(),
-    exp: moment().add(40, 'minutes').unix()
+    exp: moment().add(15, 'minutes').unix()
   }
   return jwt.encode(payload, config.SECRET_TOKEN)
 }

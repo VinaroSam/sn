@@ -199,28 +199,29 @@ app.get('/members', (req, res) => {
       "token": token
     } // request headers
   };
-  client.get("http://localhost:3000/api/user", args, function(users, response) {
-    console.log(users)
-    users.users.forEach((user) => {
-      Object.assign(user, {
-        signupDate: moment(user.signupDate).local().format('Do MMMM YYYY')
-      });
-    });
 
-    if (!identity && profile !== 'administrator') {
-      res.render('login', {
-        message: 'Invalid token, please log in',
-        layout: 'entry'
-      })
-    } else {
+  if (!identity && profile !== 'administrator') {
+    res.render('login', {
+      message: 'Invalid token, please log in',
+      layout: 'entry'
+    })
+  } else {
+
+    client.get("http://localhost:3000/api/user", args, function(users, response) {
+      console.log(users)
+      users.users.forEach((user) => {
+        Object.assign(user, {
+          signupDate: moment(user.signupDate).local().format('Do MMMM YYYY')
+        });
+      });
       res.render('members', {
         identity: identity,
         token: token,
         layout: (profile === 'administrator') ? 'admin' : 'member',
         users: users
       })
-    }
-  })
+    })
+  }
 })
 
 // mailbox create new message
