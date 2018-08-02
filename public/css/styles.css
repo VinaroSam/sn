@@ -39,7 +39,7 @@ form .form-control{border:1px solid #a0b4bf;border-radius:0px;}
 
 .outercontent{padding:10px;}
 ul.nav-pills{margin-top:0px;border-bottom:1px solid #ccc;padding-left:15px;}
-.nav-pills li{display:inline-block;margin-right:10px;}
+.nav-pills li{display:inline-block;margin-right:5px;}
 .nav-pills li a{border-radius:4px 4px 0 0!important;border:1px solid #ccc;font-size:14px;text-decoration:none;display:block;margin-bottom:-1px;}
 .nav-pills li a.nav-link.active{border-radius:4px 4px 0 0;background-color:#999!important;color:white;}
 .nav-pills li a.nav-link.active:hover{color:white!important;}
