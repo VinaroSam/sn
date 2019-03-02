@@ -113,7 +113,7 @@ app.get('/userspanel', (req, res) => {
 // Messages
 
 app.get('/mailbox', (req, res) => {
-  var token = req.query.token;
+  var {token} = req.query;
   var identity = services.sessionToken(token);
   var profile = services.profile(token);
   if (!identity) {
