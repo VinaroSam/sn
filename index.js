@@ -5,7 +5,7 @@ mongoose.Promise = Promise;
 const app = require('./app')
 const config = require('./config')
 
-mongoose.connect(config.db, { useMongoClient: true }, (err, res) => {
+mongoose.connect(config.db, { useNewUrlParser: true ,  useUnifiedTopology: true }, (err, res) => {
   if (err) {
     return console.log(`Error connection to DB: ${err}`)
   }
